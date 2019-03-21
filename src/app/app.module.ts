@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { SharedModule } from '@app/shared';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,9 +19,16 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
     AppComponent
   ],
   imports: [
+    // Angular
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
+
+    // Shared
+    SharedModule,
+
+    // Application
+    AppRoutingModule,
+
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([AppEffects]),
